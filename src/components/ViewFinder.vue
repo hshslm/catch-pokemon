@@ -26,6 +26,7 @@ const gameStore = useGameStore();
           :src="gameStore.currentPokemon.sprite"
           :alt="gameStore.currentPokemon.name"
           class="viewfinder__sprite"
+          :class="{ 'viewfinder__sprite--running-away': gameStore.gameState.isRunningAway }"
         />
       </div>
       <EncounterStats />
@@ -43,6 +44,7 @@ const gameStore = useGameStore();
   align-items: center;
   justify-content: center;
   box-shadow: var(--shadow-light);
+  overflow: hidden;
 
   @media (max-width: 768px) {
     height: 450px;
@@ -115,6 +117,38 @@ const gameStore = useGameStore();
   &__sprite {
     width: 200px;
     height: 200px;
+    transition: all 0.3s ease-out;
+
+    &--running-away {
+      animation: runAwayAnimation 1s ease-out forwards;
+    }
+  }
+}
+
+@keyframes runAwayAnimation {
+  0% {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+  20% {
+    transform: translateX(-20px) scale(1.1);
+    opacity: 1;
+  }
+  40% {
+    transform: translateX(10px) scale(0.95);
+    opacity: 0.9;
+  }
+  60% {
+    transform: translateX(-30px) scale(1.05);
+    opacity: 0.7;
+  }
+  80% {
+    transform: translateX(-100px) scale(0.8);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateX(-250px) scale(0.3);
+    opacity: 0;
   }
 }
 </style>

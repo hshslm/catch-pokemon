@@ -17,6 +17,7 @@ export const useGameStore = defineStore("game", {
       canFind: true,
       canIgnore: false,
       canThrow: false,
+      isRunningAway: false,
     },
   }),
   getters: {
@@ -114,13 +115,17 @@ export const useGameStore = defineStore("game", {
         this.saveToLocalStorage();
       } else {
         this.gameState.consecutiveFailures++;
-        this.addEventLog(`${pokemonName} broke free!`);
 
         if (this.gameState.consecutiveFailures >= 2) {
+          this.gameState.isRunningAway = true;
           this.addEventLog(`${pokemonName} ran away!`);
-          this.clearEncounter();
+          // Delay for run away animation
+          setTimeout(() => {
+            this.clearEncounter();
+          }, 1000);
         } else {
           // Disable ignore one first fail
+          this.addEventLog(`${pokemonName} broke free!`);
           this.gameState.canIgnore = false;
         }
       }
@@ -133,6 +138,7 @@ export const useGameStore = defineStore("game", {
       this.gameState.canFind = true;
       this.gameState.canIgnore = false;
       this.gameState.canThrow = false;
+      this.gameState.isRunningAway = false;
     },
 
     quitGame() {

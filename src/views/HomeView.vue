@@ -141,7 +141,7 @@ const startGame = () => {
     max-width: 320px;
     margin: 0 auto;
     border: 3px solid var(--color-primary);
-    backdrop-filter: blur(10px);
+    // backdrop-filter: blur(10px);
     transition: border-color 0.2s ease;
 
     &--continue {
@@ -151,15 +151,15 @@ const startGame = () => {
 
   &__label {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
     color: var(--color-primary);
     font-weight: 600;
     text-align: center;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     transition: color 0.2s ease;
 
     &--continue {
-      color: var(--color-accent-dark);
+      color: var(--color-accent);
     }
   }
 
