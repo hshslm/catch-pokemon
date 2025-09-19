@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --color-primary: #ff0000;
+  --color-primary-dark: #cc0000;
+  --color-secondary: #3b4cca;
+  --color-secondary-dark: #2e3a9e;
+  --color-accent: #ffde00;
+  --color-accent-dark: #d4af00;
+
+  --shadow-light: 0 2px 8px rgba(0,0,0,0.1);
+  --shadow-medium: 0 4px 16px rgba(0,0,0,0.15);
+  --shadow-heavy: 0 8px 32px rgba(0,0,0,0.25);
+  --shadow-focus: 0 0 0 3px rgba(59, 76, 202, 0.1);
+  --text-shadow-light: 1px 1px 2px rgba(0,0,0,0.3);
+  --text-shadow-heavy: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+* {
+  font-family: sans-serif;
+}
+
+.font-primary {
+  font-family: 'Press Start 2P';
+  text-transform: uppercase !important;
+}
+
+.btn {
+  padding: 0 1.5rem;
+  border: none;
+  font-size: 0.7rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  font-family: 'Press Start 2P';
+  text-transform: uppercase;
+  position: relative;
+  line-height: 1;
+  height: 3rem;
+
+  &:disabled {
+    cursor: default;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      background: linear-gradient(
+        35deg,
+        transparent 50%,
+        var(--color-primary) 47%,
+        var(--color-primary) 52%,
+        transparent 50%
+      );
+      pointer-events: none;
+        }
+  }
+}
+
+.btn-primary {
+  @extend .btn;
+  background: var(--color-primary);
+  color: white;
+
+  &:hover:not(:disabled) {
+    background: var(--color-primary-dark);
+  }
+}
+
+.btn-secondary {
+  @extend .btn;
+  background: var(--color-secondary);
+  color: white;
+
+  &:hover:not(:disabled) {
+    background: var(--color-secondary);
+  }
+}
+
+.btn-alt {
+  @extend .btn;
+  background: #34495e;
+  color: white;
+
+  &:hover:not(:disabled) {
+    background: #2c3e50;
+  }
+}
+
+.btn-accent {
+  @extend .btn;
+  background: var(--color-accent);
+  color: #333;
+
+  &:hover:not(:disabled) {
+    background: var(--color-accent-dark);
+  }
+}
+
+.btn-accent-dark {
+  @extend .btn;
+  background: var(--color-accent-dark);
+  color: #333;
+
+  &:hover:not(:disabled) {
+    background: var(--color-accent);
+  }
+}
+
+.btn-white {
+  @extend .btn;
+  background: white;
+  color: #333;
+
+  &:hover:not(:disabled) {
+    background: #f0f0f0;
+  }
+}
+
+// Pokemon type colors
+.fire { background: #F08030; }
+.water { background: #6890F0; }
+.grass { background: #78C850; }
+.electric { background: #F8D030; color: #333; }
+.psychic { background: #F85888; }
+.ice { background: #98D8D8; }
+.dragon { background: #7038F8; }
+.dark { background: #705848; }
+.fairy { background: #EE99AC; }
+.normal { background: #A8A878; }
+.fighting { background: #C03028; }
+.flying { background: #A890F0; }
+.poison { background: #A040A0; }
+.ground { background: #E0C068; color: #333; }
+.rock { background: #B8A038; }
+.bug { background: #A8B820; }
+.ghost { background: #705898; }
+.steel { background: #B8B8D0; color: #333; }
