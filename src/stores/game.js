@@ -146,7 +146,7 @@ export const useGameStore = defineStore("game", {
     },
 
     saveToLocalStorage() {
-      const saveKey = `pokemonGameSave_${this.trainer.name}`;
+      const saveKey = `pokemonGameSave_${this.trainer.name.toLowerCase()}`;
       const saveData = {
         trainer: this.trainer,
         capturedPokemon: this.capturedPokemon,
@@ -159,7 +159,7 @@ export const useGameStore = defineStore("game", {
       let saveKey;
       // if (!user)
       if (username) {
-        saveKey = `pokemonGameSave_${username}`;
+        saveKey = `pokemonGameSave_${username.toLowerCase()}`;
       }
 
       const saveData = localStorage.getItem(saveKey);

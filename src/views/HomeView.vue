@@ -18,12 +18,12 @@ onMounted(() => {
 
 const isExistingTrainer = computed(() => {
   if (!trainerName.value.trim()) return false;
-  const saveKey = `pokemonGameSave_${trainerName.value.trim()}`;
+  const saveKey = `pokemonGameSave_${trainerName.value.trim().toLowerCase()}`;
   const saveData = localStorage.getItem(saveKey);
   if (!saveData) return false;
   try {
     const parsed = JSON.parse(saveData);
-    return parsed.trainer?.name === trainerName.value.trim();
+    return parsed.trainer?.name?.toLowerCase() === trainerName.value.trim().toLowerCase();
   } catch {
     return false;
   }
